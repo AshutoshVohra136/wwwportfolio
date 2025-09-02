@@ -27,5 +27,16 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-const PORT = process.env.PORT || 4040;
-app.listen(PORT, () => console.log(`Running on Port: ${PORT}`));
+// Handle all other routes by serving index.html (for SPA routing)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Export the app for Vercel
+module.exports = app;
+
+// Only start server if not in Vercel environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  const PORT = process.env.PORT || 4040;
+  app.listen(PORT, () => console.log(`Running on Port: ${PORT}`));
+}

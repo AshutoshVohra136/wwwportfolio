@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "node app.js",
-    "build": "echo 'No build step required for static site'"
+    "build": "echo 'No build step required'"
   },
   "keywords": ["portfolio", "backend", "nodejs", "express", "developer"],
   "author": "Ashutosh Vohra",
