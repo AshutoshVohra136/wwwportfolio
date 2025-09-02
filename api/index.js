@@ -19,17 +19,17 @@ const path = require("path");
 require("dotenv").config();
 const app = express();
 
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, "public")));
+// Serve static files from the "public" directory (go up one level from api/)
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // Route to serve the index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
 // Handle all other routes by serving index.html (for SPA routing)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
 // Export the app for Vercel
